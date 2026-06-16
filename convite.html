@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Um convite especial para você." />
+  <title>Convite Especial — Retrospectiva</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+</head>
+<body class="pagina-convite">
+
+  <div class="convite-wrapper">
+
+    <!-- ── Topo ── -->
+    <div class="convite-topo revelar">
+      <p class="convite-eyebrow">Para você</p>
+      <h1 class="convite-titulo">
+        Um primeiro encontro,<br>pela segunda vez
+      </h1>
+      <div class="convite-linha" aria-hidden="true"></div>
+    </div>
+
+    <!-- ── Corpo ── -->
+    <div class="convite-corpo revelar revelar-delay-1">
+      <p>
+        Depois de revisitar um pouco de tudo o que vivemos, eu quis terminar
+        este caminho com um convite simples, mas muito sincero.
+      </p>
+      <p style="margin-top: 16px;">
+        Não é uma promessa de que tudo vai voltar a ser como antes, nem uma
+        tentativa de apagar o que aconteceu. É apenas a vontade de sentar
+        diante de você mais uma vez, dividir uma boa comida, conversar com
+        calma e permitir que duas pessoas que já se conheceram tanto possam
+        se conhecer novamente.
+      </p>
+      <p style="margin-top: 16px;">
+        Pensei em um restaurante italiano porque queria que fosse uma noite
+        bonita, tranquila e especial — sem pressão, sem cobranças e sem a
+        obrigação de decidir o nosso futuro naquela mesa.
+      </p>
+    </div>
+
+    <!-- ── Detalhes ── -->
+    <div class="convite-detalhes revelar revelar-delay-2">
+
+      <div class="convite-detalhe-item">
+        <span class="convite-detalhe-icone" aria-hidden="true">📍</span>
+        <div>
+          <p class="convite-detalhe-label">Local</p>
+          <p class="convite-detalhe-valor">Restaurante italiano</p>
+          <p class="convite-detalhe-valor" style="font-size: 0.82rem; color: var(--cor-texto-suave); margin-top: 2px;">
+            O endereço será informado depois.
+          </p>
+        </div>
+      </div>
+
+      <div class="convite-detalhe-item">
+        <span class="convite-detalhe-icone" aria-hidden="true">📅</span>
+        <div>
+          <p class="convite-detalhe-label">Data</p>
+          <p class="convite-detalhe-valor">2 de julho de 2026</p>
+        </div>
+      </div>
+
+      <div class="convite-detalhe-item">
+        <span class="convite-detalhe-icone" aria-hidden="true">🕗</span>
+        <div>
+          <p class="convite-detalhe-label">Horário</p>
+          <p class="convite-detalhe-valor">20h</p>
+        </div>
+      </div>
+
+      <div class="convite-detalhe-item">
+        <span class="convite-detalhe-icone" aria-hidden="true">✦</span>
+        <div>
+          <p class="convite-detalhe-label">Dress code</p>
+          <p class="convite-detalhe-valor">Linda como sempre.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Nota final antes dos botões ── -->
+    <p class="convite-corpo revelar revelar-delay-2" style="margin-bottom: 36px; font-style: italic; font-size: 0.9rem; color: var(--cor-texto-suave);">
+      Não precisa me mandar nenhuma mensagem depois de escolher.
+      Sua resposta chegará até mim por aqui.
+    </p>
+
+    <!-- ── Ações ── -->
+    <div class="convite-acoes revelar revelar-delay-3">
+
+      <button
+        id="btn-confirmar"
+        class="btn btn-primario"
+        style="width: 100%; max-width: 340px;"
+        aria-label="Confirmar presença"
+      >
+        Quero viver essa noite
+      </button>
+
+      <button
+        id="btn-recusar"
+        class="btn-fantasma"
+        aria-label="Prefiro não ir"
+      >
+        Prefiro não ir
+      </button>
+
+    </div>
+
+    <!-- Mensagem após confirmação -->
+    <div id="convite-confirm" class="convite-confirm" role="status" aria-live="polite">
+      <p>
+        🥂 Fico muito feliz.<br><br>
+        Te espero no dia 2 de julho, às 20h.<br>
+        Vai ser uma noite especial — sem pressa, sem pressão.<br>
+        Só duas pessoas que têm muito a se dizer.
+      </p>
+    </div>
+
+    <!-- Mensagem após recusa -->
+    <div id="convite-recusa" class="convite-confirm" role="status" aria-live="polite" style="display:none;">
+      <p>
+        Tudo bem. Eu entendo e respeito.<br><br>
+        Independentemente dessa decisão, o carinho
+        que tenho pelas lembranças que compartilhamos
+        não muda. Obrigado por ter chegado até aqui. 🍷
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Link discreto de volta -->
+  <a
+    href="index.html"
+    class="rodape"
+    style="display:block; text-decoration: none;"
+    aria-label="Voltar para a retrospectiva"
+  >
+    ← Voltar para a retrospectiva
+  </a>
+
+  <script>
+    'use strict';
+
+    const supabaseConfig = window.SUPABASE_CONFIG || {};
+    const SUPABASE_URL = supabaseConfig.url || 'COLE_AQUI_A_URL_DO_SEU_PROJETO_SUPABASE';
+    const SUPABASE_ANON_KEY = supabaseConfig.anonKey || 'COLE_AQUI_A_CHAVE_ANON_PUBLIC_DO_SUPABASE';
+    const SUPABASE_TABELA_RESPOSTAS = supabaseConfig.table || 'convite_resposta';
+
+    const supabaseClient =
+      window.supabase &&
+      !SUPABASE_URL.includes('COLE_AQUI') &&
+      !SUPABASE_ANON_KEY.includes('COLE_AQUI')
+        ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+        : null;
+
+    // ── Scroll reveal ──────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      const els = document.querySelectorAll('.revelar');
+
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(el => el.classList.add('visivel'));
+        return;
+      }
+
+      const obs = new IntersectionObserver(
+        entries => entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visivel');
+            obs.unobserve(e.target);
+          }
+        }),
+        { threshold: 0.1 }
+      );
+      els.forEach(el => obs.observe(el));
+    });
+
+    // ── Botões ────────────────────────────────
+    const btnConfirmar = document.getElementById('btn-confirmar');
+    const btnRecusar   = document.getElementById('btn-recusar');
+    const msgConfirm   = document.getElementById('convite-confirm');
+    const msgRecusa    = document.getElementById('convite-recusa');
+    const acoes        = document.querySelector('.convite-acoes');
+
+    btnConfirmar?.addEventListener('click', async () => {
+      const salvo = await salvarRespostaConvite('aceitou');
+      acoes.style.display      = 'none';
+      msgConfirm.style.display = 'block';
+      msgRecusa.style.display  = 'none';
+      if (!salvo) console.warn('Resposta exibida, mas nao foi salva no Supabase.');
+      lancarCoracao();
+    });
+
+    btnRecusar?.addEventListener('click', async () => {
+      const salvo = await salvarRespostaConvite('recusou');
+      acoes.style.display      = 'none';
+      msgRecusa.style.display  = 'block';
+      msgConfirm.style.display = 'none';
+      if (!salvo) console.warn('Resposta exibida, mas nao foi salva no Supabase.');
+    });
+
+    async function salvarRespostaConvite(resposta) {
+      if (!supabaseClient) {
+        console.warn('Configure SUPABASE_URL e SUPABASE_ANON_KEY em convite.html.');
+        return false;
+      }
+
+      btnConfirmar.disabled = true;
+      btnRecusar.disabled = true;
+
+      const { error } = await supabaseClient
+        .from(SUPABASE_TABELA_RESPOSTAS)
+        .insert({
+          resposta,
+          pagina: 'convite.html',
+          user_agent: navigator.userAgent
+        });
+
+      if (error) {
+        console.error('Erro ao salvar resposta no Supabase:', error);
+        btnConfirmar.disabled = false;
+        btnRecusar.disabled = false;
+        return false;
+      }
+
+      return true;
+    }
+
+    // ── Corações ao confirmar ─────────────────
+    function lancarCoracao() {
+      const canvas = document.createElement('canvas');
+      canvas.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:999;';
+      document.body.appendChild(canvas);
+      const ctx = canvas.getContext('2d');
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const particulas = Array.from({ length: 45 }, () => ({
+        x:  Math.random() * canvas.width,
+        y:  canvas.height + 20,
+        s:  0.8 + Math.random() * 1.6,
+        vx: -1.2 + Math.random() * 2.4,
+        vy: -(2.2 + Math.random() * 3),
+        op: 1
+      }));
+
+      let frame;
+      function animar() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let vivas = 0;
+        particulas.forEach(p => {
+          if (p.y < -40 || p.op <= 0) return;
+          vivas++;
+          p.x  += p.vx;
+          p.y  += p.vy;
+          p.op -= 0.007;
+          ctx.save();
+          ctx.globalAlpha = Math.max(0, p.op);
+          ctx.font = `${Math.round(p.s * 28)}px serif`;
+          ctx.fillStyle = '#c0384e';
+          ctx.fillText('♥', p.x, p.y);
+          ctx.restore();
+        });
+        if (vivas > 0) frame = requestAnimationFrame(animar);
+        else canvas.remove();
+      }
+      frame = requestAnimationFrame(animar);
+      setTimeout(() => { cancelAnimationFrame(frame); canvas.remove(); }, 4500);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Uma retrospectiva de momentos que marcaram nossa história." />
+  <title>Retrospectiva</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════
+       TELA 1 — HERO
+  ════════════════════════════════════════════ -->
+  <section id="hero" aria-label="Início">
+
+    <!-- Fundo com efeito Ken Burns -->
+    <!-- SUBSTITUA a imagem em style.css → #hero-bg { background-image: url('...') } -->
+    <div id="hero-bg" role="presentation" aria-hidden="true"></div>
+
+    <div class="hero-conteudo">
+      <span class="hero-eyebrow">Uma história nossa</span>
+
+      <h1 class="hero-titulo">
+        Nossa<br>Retrospectiva
+      </h1>
+
+      <p class="hero-subtitulo">
+        Alguns momentos merecem ser lembrados com calma,
+        com cuidado — e com a trilha certa tocando ao fundo.
+      </p>
+
+      <p class="hero-nota">
+        Role para descobrir os capítulos dessa história.
+        Cada um guarda fotos, legendas e memórias que só a gente sabe.
+      </p>
+
+      <div class="hero-acoes">
+        <button id="btn-comecar" class="btn btn-primario" aria-label="Começar a retrospectiva">
+          Começar retrospectiva
+        </button>
+
+        <!-- Controle de música -->
+        <button
+          id="ctrl-musica"
+          aria-label="Reproduzir nossa música"
+          title="Nossa música"
+        >
+          <span class="icone-musica" aria-hidden="true">♪</span>
+          <span class="txt-musica">Reproduzir nossa música</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Barra de progresso da música (fixa na base) -->
+    <div
+      id="barra-musica"
+      class="barra-progresso-musica"
+      role="progressbar"
+      aria-label="Progresso da música"
+      aria-valuenow="0"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    ></div>
+  </section>
+
+  <!-- Áudio — SUBSTITUA pelo caminho do arquivo de música -->
+  <audio
+    id="audio-nossa-musica"
+    src="Foi assim.mpeg"
+    preload="none"
+    aria-hidden="true"
+  ></audio>
+
+
+  <!-- ════════════════════════════════════════════
+       TELA 2 — CAPÍTULOS
+  ════════════════════════════════════════════ -->
+  <section id="capitulos" aria-labelledby="titulo-capitulos">
+
+    <header class="capitulos-cabecalho revelar">
+      <p class="secao-subtitulo" style="margin-bottom: 6px;">
+        Capítulo por capítulo
+      </p>
+      <h2 id="titulo-capitulos" class="secao-titulo">
+        Os momentos que guardaremos sempre
+      </h2>
+      <div class="linha-divisor" aria-hidden="true"></div>
+      <p class="secao-subtitulo">
+        Cada card abre uma galeria de fotos com as memórias daquele período.
+        Clique para explorar.
+      </p>
+    </header>
+
+    <!-- Cards construídos pelo script.js via CAPITULOS[] -->
+    <div
+      id="grade-capitulos"
+      class="grade-capitulos"
+      role="list"
+      aria-label="Lista de capítulos"
+    ></div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       MODAL — Galeria de fotos
+  ════════════════════════════════════════════ -->
+  <div
+    id="modal-capitulo"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-titulo-cap"
+    tabindex="-1"
+  >
+    <div class="modal-cabecalho">
+      <h2 id="modal-titulo-cap" class="modal-titulo-cap"></h2>
+      <button
+        id="modal-fechar"
+        class="modal-fechar"
+        aria-label="Fechar galeria"
+        title="Fechar (Esc)"
+      >✕</button>
+    </div>
+
+    <div class="modal-carrossel">
+      <img
+        id="modal-foto-principal"
+        class="foto-principal"
+        src=""
+        alt=""
+      />
+
+      <p id="modal-legenda" class="foto-legenda"></p>
+
+      <nav class="modal-nav" aria-label="Navegação de fotos">
+        <button
+          id="modal-antes"
+          class="modal-nav-btn"
+          aria-label="Foto anterior"
+          disabled
+        >‹</button>
+
+        <span id="modal-indicador" class="modal-indicador" aria-live="polite"></span>
+
+        <button
+          id="modal-depois"
+          class="modal-nav-btn"
+          aria-label="Próxima foto"
+        >›</button>
+      </nav>
+
+      <!-- Miniaturas geradas pelo script.js -->
+      <div
+        id="modal-thumbs"
+        class="modal-thumbs"
+        role="list"
+        aria-label="Miniaturas das fotos"
+      ></div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════
+       SEÇÃO DESTAQUE
+  ════════════════════════════════════════════ -->
+  <section id="destaque" aria-labelledby="titulo-destaque">
+    <div class="destaque-inner">
+
+      <div class="destaque-img-wrap">
+        <!-- SUBSTITUA pelo caminho da sua foto de destaque -->
+        <img
+          src="assets/images/destaque.jpg"
+          alt="Foto de destaque"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+      <div class="destaque-texto revelar">
+        <p class="destaque-eyebrow">Em destaque</p>
+        <h2 id="titulo-destaque" class="destaque-titulo">
+          Um momento que vai ficar para sempre
+        </h2>
+        <p class="destaque-corpo">
+          Alguns momentos não precisam de muitas palavras. Eles simplesmente
+          ficam — na memória, nas fotos, no jeito como a gente sorri quando
+          lembra. Esse foi um desses momentos.
+        </p>
+        <button id="btn-dest-continuar" class="btn btn-primario">
+          Continuar a história
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       QUEBRA-CABEÇA
+  ════════════════════════════════════════════ -->
+  <section id="quebra-cabeca" class="secao" aria-labelledby="titulo-puzzle">
+
+    <div class="revelar" style="text-align:center; margin-bottom: 40px;">
+      <p class="secao-subtitulo" style="margin: 0 auto 6px;">Um pequeno desafio</p>
+      <h2 id="titulo-puzzle" class="secao-titulo" style="margin-bottom: 8px;">
+        Monte a foto e descubra a surpresa
+      </h2>
+      <div class="linha-divisor" style="margin: 12px auto 0;" aria-hidden="true"></div>
+    </div>
+
+    <!-- Grade do puzzle — construída pelo script.js -->
+    <div
+      id="puzzle-grid"
+      class="puzzle-grid"
+      role="grid"
+      aria-label="Quebra-cabeça — arraste as peças para montar a imagem"
+    ></div>
+
+    <!-- Mensagem de conclusão -->
+    <div id="puzzle-concluido" class="puzzle-concluido" role="status" aria-live="polite">
+      <p class="puzzle-msg-titulo">🎉 Você montou!</p>
+      <p class="puzzle-msg-sub">
+        Algumas memórias, quando remontadas, ficam ainda mais bonitas.
+      </p>
+      <button id="btn-puzzle-continuar" class="btn btn-primario">
+        Ver a mensagem final
+      </button>
+    </div>
+
+    <!-- Controles -->
+    <div class="puzzle-controles" style="margin-top: 20px;">
+      <button id="btn-recomecar-puzzle" class="btn btn-secundario">
+        Embaralhar de novo
+      </button>
+    </div>
+
+    <!-- Canvas do confetti -->
+    <canvas
+      id="puzzle-confetti"
+      class="puzzle-confetti"
+      style="display:none;"
+      aria-hidden="true"
+    ></canvas>
+
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       SEÇÃO FINAL
+  ════════════════════════════════════════════ -->
+  <section id="final" aria-labelledby="titulo-final">
+    <div class="final-inner revelar">
+
+      <div class="final-ornamento" aria-hidden="true"></div>
+
+      <h2 id="titulo-final" class="final-titulo">
+        Obrigado por fazer parte<br>dessa história
+      </h2>
+
+      <p class="final-corpo">
+        Nem toda história precisa de um final perfeito para ter sido verdadeira.
+        Algumas só precisam ter acontecido — e essa aconteceu bonito.
+      </p>
+
+      <p class="final-nota">
+        Guarde essa retrospectiva. Ela foi feita com cuidado,<br>
+        do começo ao fim, pensando em você.
+      </p>
+
+      <!-- Link para a página de convite (opcional) -->
+      <a href="convite.html" class="btn btn-primario" role="button">
+        Ver o convite especial
+      </a>
+
+      <div class="final-ornamento-baixo" aria-hidden="true"></div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════
+       RODAPÉ
+  ════════════════════════════════════════════ -->
+  <footer class="rodape">
+    <p>Feito com carinho &nbsp;·&nbsp; <span aria-hidden="true">♥</span></p>
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
