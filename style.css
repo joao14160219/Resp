@@ -370,7 +370,7 @@ a { color: inherit; text-decoration: none; }
   transition: gap var(--transicao), color var(--transicao);
 }
 .card-btn:hover { gap: 10px; color: var(--cor-bordô-claro); }
-.card-btn::after { content: '→'; }
+.card-btn::after { content: '♥'; }
 
 
 /* ══════════════════════════════════════════════════════
@@ -386,6 +386,57 @@ a { color: inherit; text-decoration: none; }
   -webkit-overflow-scrolling: touch;
 }
 #modal-capitulo.aberto { display: flex; flex-direction: column; }
+
+.carta-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 950;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(5,2,4,0.94);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.carta-modal[hidden] {
+  display: none;
+}
+.carta-modal-painel {
+  width: min(100%, 640px);
+  margin: 24px auto;
+  padding: 24px 22px 30px;
+  border: 1px solid rgba(160,37,64,0.3);
+  border-radius: var(--raio);
+  background: #12090d;
+  box-shadow: var(--sombra-card);
+  animation: surgir 0.28s ease forwards;
+}
+.carta-modal-topo {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+.carta-modal-topo .hero-eyebrow {
+  margin-bottom: 8px;
+}
+.carta-modal-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.35rem, 5vw, 2rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.2;
+}
+.carta-modal-texto {
+  color: var(--cor-texto-suave);
+  font-size: 0.96rem;
+  line-height: 1.85;
+}
+.carta-modal-texto p + p {
+  margin-top: 16px;
+}
 
 .modal-cabecalho {
   display: flex;
@@ -443,6 +494,10 @@ a { color: inherit; text-decoration: none; }
   transition: opacity 0.3s ease;
 }
 .foto-principal.trocando { opacity: 0; }
+
+video.foto-principal {
+  background: #12070b;
+}
 
 .foto-legenda {
   text-align: center;
@@ -790,6 +845,35 @@ body.pagina-convite {
   line-height: 1.2;
   margin-bottom: 12px;
 }
+.convite-aviso-carta {
+  max-width: 440px;
+  margin: 0 auto 10px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--cor-texto-suave);
+}
+.btn-carta-online {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 18px;
+  margin-top: 6px;
+  border: 1px solid rgba(192,56,78,0.38);
+  border-radius: 4px;
+  background: rgba(192,56,78,0.12);
+  color: var(--cor-texto);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background var(--transicao), border-color var(--transicao), transform var(--transicao);
+}
+.btn-carta-online:hover {
+  background: rgba(192,56,78,0.22);
+  border-color: rgba(192,56,78,0.65);
+}
+.btn-carta-online:active { transform: scale(0.98); }
 .convite-linha {
   width: 48px;
   height: 1px;

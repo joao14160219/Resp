@@ -23,119 +23,220 @@
 const CAPITULOS = [
   {
     titulo: 'O começo de tudo',
-    descricao: 'As primeiras conversas, os primeiros encontros e o começo de algo que ainda não sabíamos onde chegaria.',
+    descricao: 'Essa foto guarda o começo de tudo. No nosso primeiro dia, eu ainda não sabia explicar, mas já existia alguma coisa acontecendo entre nós. Mal sabia João o quanto ainda ia se apaixonar por você..',
     // ↓ SUBSTITUA pelo caminho da sua foto de capa
-    capa: 'assets/images/capitulo-1-capa.jpg',
+    capa: 'imgs/1.jpeg',
     fotos: [
       {
-        src: 'assets/images/capitulo-1-1.jpg',
+        src: 'imgs/1.jpeg',
         legenda: 'Aqui eu ainda não imaginava quanta coisa viveríamos juntos.'
-      },
-      {
-        src: 'assets/images/capitulo-1-2.jpg',
-        legenda: 'Esse dia começou comum e terminou virando uma das minhas lembranças favoritas.'
-      },
-      {
-        src: 'assets/images/capitulo-1-3.jpg',
-        legenda: 'Nem todos os momentos importantes pareciam importantes enquanto aconteciam.'
       }
     ]
   },
   {
-    titulo: 'Quando viramos nós',
-    descricao: 'O momento em que deixou de existir apenas você e eu e começou a existir nós.',
-    capa: 'assets/images/capitulo-2-capa.jpg',
+    titulo: 'Nosso Primeiro Date',
+    descricao: 'Esse dia foi um divisor de águas para mim. Fui sem muitas expectativas e acabei conhecendo uma menina carinhosa, atenciosa e com um jeito que, sem fazer esforço, começou a me ganhar ali mesmo.',
+    
+    capa: 'imgs/2.jpeg',
     fotos: [
       {
-        src: 'assets/images/capitulo-2-1.jpg',
-        legenda: 'Uma das coisas mais bonitas foi transformar momentos simples em lembranças.'
-      },
-      {
-        src: 'assets/images/capitulo-2-2.jpg',
-        legenda: 'Essa foto ainda me faz lembrar exatamente de como eu me sentia naquele dia.'
+        src: 'imgs/2.jpeg',
+        legenda: 'Aqui não tínhamos ideia da história linda que íamos construir, e apesar de tudo, sou muito grato a você.'
       }
     ]
   },
   {
-    titulo: 'Nossos dias comuns',
-    descricao: 'Os dias simples, as conversas sem hora, as comidas, os filmes e os momentos que pareciam pequenos, mas hoje significam muito.',
-    capa: 'assets/images/capitulo-3-capa.jpg',
+    titulo: 'Meu Wallpaper Favorito',
+    descricao: 'Essa foi uma das primeiras foto que mandou e quardo com muito carinho.',
+    capa: 'imgs/wallpaper.jpeg',
     fotos: [
       {
-        src: 'assets/images/capitulo-3-1.jpg',
-        legenda: 'Uma lembrança que ainda consegue arrancar um sorriso.'
-      },
-      {
-        src: 'assets/images/capitulo-3-2.jpg',
-        legenda: 'Nem todo momento precisa ser especial para ser lembrado com carinho.'
-      },
-      {
-        src: 'assets/images/capitulo-3-3.jpg',
-        legenda: 'Esses momentos simples são os que mais ficam.'
-      }
-    ]
-  },
-  {
-    titulo: 'Nossas aventuras',
-    descricao: 'Os lugares que conhecemos, os passeios e os momentos em que o mundo parecia um pouco mais leve.',
-    capa: 'assets/images/capitulo-4-capa.jpg',
-    fotos: [
-      {
-        src: 'assets/images/capitulo-4-1.jpg',
-        legenda: 'Descobrir lugares juntos tem um gosto diferente de tudo.'
-      },
-      {
-        src: 'assets/images/capitulo-4-2.jpg',
-        legenda: 'Esse dia ainda me faz querer repetir cada detalhe.'
-      }
-    ]
-  },
-  {
-    titulo: 'As nossas melhores versões',
-    descricao: 'Momentos em que cuidamos, apoiamos e fizemos bem um ao outro.',
-    capa: 'assets/images/capitulo-5-capa.jpg',
-    fotos: [
-      {
-        src: 'assets/images/capitulo-5-1.jpg',
-        legenda: 'Essa foto ainda me faz lembrar exatamente de como eu me sentia naquele dia.'
-      },
-      {
-        src: 'assets/images/capitulo-5-2.jpg',
-        legenda: 'Existiram momentos em que fomos muito bons um para o outro.'
-      }
-    ]
-  },
-  {
-    titulo: 'Coisas que só a gente entende',
-    descricao: 'As brincadeiras, os apelidos, as frases e as memórias que só fazem sentido para nós.',
-    capa: 'assets/images/capitulo-6-capa.jpg',
-    fotos: [
-      {
-        src: 'assets/images/capitulo-6-1.jpg',
-        legenda: 'Algumas referências que ninguém mais ia entender além de nós dois.'
-      },
-      {
-        src: 'assets/images/capitulo-6-2.jpg',
+        src: 'imgs/wallpaper.jpeg',
         legenda: 'Uma lembrança que ainda consegue arrancar um sorriso.'
       }
     ]
   },
   {
-    titulo: 'Um capítulo que ainda significa muito',
-    descricao: 'Nem toda história precisa ser perfeita para ter sido verdadeira.',
-    capa: 'assets/images/capitulo-7-capa.jpg',
+    titulo: 'Praia',
+    descricao: 'Aqui já foi difícil esconder o que eu sentia, tanto que escapou um “eu te amo” kkkkk.',
+    capa: 'imgs/praia.jpeg',
     fotos: [
       {
-        src: 'assets/images/capitulo-7-1.jpg',
+        src: 'imgs/praia.jpeg',
+        legenda: 'Nois dois bebos.'
+      },
+      {
+        src: 'imgs/praia 2.jpeg',
+        legenda: 'Acho que foi aqui que escapou.'
+      },
+      {
+        src: 'imgs/praia 3.jpeg',
+        legenda: 'Bebos dnv.'
+      },
+      {
+        src: 'imgs/praia 4.jpeg',
+        legenda: 'KKKK nós e uma porca prenha.'
+      },
+      {
+        src: 'imgs/praia 5.jpeg',
+        legenda: 'E, por fim, a foto que mandei para sua mãe. Quase uma Cowgirl já kkk.'
+      }
+    ]
+  },
+  {
+    titulo: 'Aniversário do Crespi',
+    descricao: 'Essa foto guarda um dos dias mais felizes da minha vida. Foi o dia em que você me disse “eu te amo” e, por alguns segundos, tudo fez sentido. Ali eu já sabia que a gente realmente estava indo para frente.',
+    
+    capa: 'imgs/chespi 2.jpeg',
+    fotos: [
+      {
+        src: 'imgs/crespi 1.jpeg',
+        legenda: 'Quando pegou meu celular para dar umas conferidas, te amo.'
+      },
+      {
+        src: 'imgs/chespi 2.jpeg',
+        legenda: 'Essa foto é bem marcante, aqui foi a certeza do namoro'
+      },
+      {
+        src: 'imgs/chespi 3.jpeg',
+        legenda: ''
+      },
+      {
+        src: 'imgs/chespi 4.jpeg',
+        legenda: 'Foto do pós brincadeiras.'
+      },
+      {
+        src: 'imgs/chespi 5.jpeg',
+        legenda: 'Ninguem é de ferro.'
+      },
+      {
+        src: 'imgs/chespi 6.jpeg',
+        legenda: 'Brincadeiras rolaram nesse lugar.'
+      }
+    ]
+  },
+  {
+    titulo: 'Wilian the sogro',
+    descricao: 'Vou sentir saudades das iguarias feitas pelo grande chef Willian e dos mimos culinários.',
+    capa: 'imgs/carne_willian.jpeg',
+    fotos: [
+      {
+        src: 'imgs/carne_willian.jpeg',
+        legenda: 'Picanha com batata doce roxa, papo de loucura.'
+      }
+    ]
+  },
+  {
+    titulo: 'Bottega Bernacca',
+    descricao: 'Nossa, nesse dia você estava deslumbrante. Tive que te atacar no carro.',
+    capa: 'imgs/ibira.jpeg',
+    fotos: [
+      {
+        src: 'imgs/ibira.jpeg',
         legenda: 'Nem todos os momentos importantes pareciam importantes enquanto aconteciam.'
       },
       {
-        src: 'assets/images/capitulo-7-2.jpg',
-        legenda: 'Essa foto ainda me faz lembrar exatamente de como eu me sentia naquele dia.'
+        src: 'imgs/ibira 2.jpeg',
+        legenda: 'Uma lembrança que ainda consegue arrancar um sorriso.'
+      }
+    ]
+  },
+  {
+    titulo: 'Lego',
+    descricao: 'Uma flor que dura para sempre, assim como tudo que eu sinto por você.',
+    capa: 'imgs/lego.jpeg',
+    fotos: [
+      {
+        src: 'imgs/lego.jpeg',
+        legenda: 'Ainda vou te devolver ela montada.'
       },
       {
-        src: 'assets/images/capitulo-7-3.jpg',
-        legenda: 'Algumas histórias não precisam de um final perfeito para terem sido verdadeiras.'
+        src: 'imgs/lego 2.jpeg',
+        legenda: 'Nós e a supervisora.'
+      }
+    ]
+  },
+  {
+    titulo: 'Jantar com os pais',
+    descricao: 'Esse dia foi bem legal. Teve até homenagem para você no restaurante.',
+    capa: 'imgs/almoço_pais.jpeg',
+    fotos: [
+      {
+        src: 'imgs/almoço_pais.jpeg',
+        legenda: 'Linda.'
+      },
+      {
+        src: 'imgs/almoço_pais.mp4',
+        tipo: 'video',
+        legenda: 'Musica em sua homenagem.'
+      }
+    ]
+  },
+  {
+    titulo: 'Nós e as graças',
+    descricao: 'Aqui eu percebo o seu ponto: quando estava comigo, você era você, sempre com muita alegria.',
+    capa: 'imgs/quarto.jpeg',
+    fotos: [
+      {
+        src: 'imgs/quarto.jpeg',
+        legenda: 'Estranhos mas sempre juntos.'
+      },
+      {
+        src: 'imgs/quarto 2.jpeg',
+        legenda: 'Estilo é para poucos.'
+      }
+    ]
+  },
+  {
+    titulo: 'Ano novo',
+    descricao: 'Apesar da distância, eu me sentia sempre com você, recebendo mensagens desse corpicho gostoso indo para a praia.',
+    capa: 'imgs/ano novo.jpeg',
+    fotos: [
+      {
+        src: 'imgs/ano novo.jpeg',
+        legenda: 'Deusa grega.'
+      }
+    ]
+  },
+  {
+    titulo: 'Parati',
+    descricao: 'Nessa viagem, vimos um pouquinho do que é ser pais kkkk. Vicente não desgrudava de nós dois (Titicia).',
+    capa: 'imgs/parati.jpeg',
+    fotos: [
+      {
+        src: 'imgs/parati.jpeg',
+        legenda: 'Eu você e a mamis'
+      },
+      {
+        src: 'imgs/parati 2.jpeg',
+        legenda: 'Agora com a helenão e o Duardo.'
+      },
+      {
+        src: 'imgs/parati 3.jpeg',
+        legenda: 'Até de longe é linda, como pode.'
+      }
+    ]
+  },
+  {
+    titulo: 'Fotos avulsas nossas',
+    descricao: 'Só quero dizer que nunca foi minha intenção me separar de você. Esses momentos eram muito bons, minha princesa.',
+    capa: 'imgs/WhatsApp Image 2026-06-18 at 09.17.07 (1).jpeg',
+    fotos: [
+      {
+        src: 'imgs/WhatsApp Image 2026-06-18 at 09.17.07 (1).jpeg',
+        legenda: 'Nosso neguinho de estimação.'
+      },
+      {
+        src: 'imgs/WhatsApp Image 2026-06-18 at 09.17.07 (2).jpeg',
+        legenda: 'Sushizinho em casa mesmo(Tava com vontade em kkkk).'
+      },
+      {
+        src: 'imgs/WhatsApp Image 2026-06-18 at 09.42.04.jpeg',
+        legenda: 'Foto mais pura nossa.'
+      },
+      {
+        src: 'imgs/WhatsApp Image 2026-06-18 at 09.43.36.jpeg',
+        legenda: 'Adoro essas fotos juntos em lugares aleatórios.'
       }
     ]
   }
@@ -147,6 +248,7 @@ const CAPITULOS = [
    ══════════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
   iniciarHero();
+  iniciarCartaOnline();
   construirCapitulos();
   iniciarModal();
   iniciarMusica();
@@ -264,6 +366,14 @@ function construirCapitulos() {
       </div>
     `;
 
+    const imgCapa = card.querySelector('.card-capa img');
+    imgCapa?.addEventListener('error', () => {
+      const capaEl = card.querySelector('.card-capa');
+      if (capaEl) {
+        capaEl.innerHTML = `${placeholderHTML()}<span class="card-num">Cap. ${num}</span>`;
+      }
+    });
+
     card.querySelector('.card-btn').addEventListener('click', () => abrirModal(idx));
     card.addEventListener('click', () => abrirModal(idx));
     grade.appendChild(card);
@@ -278,8 +388,7 @@ function imagemOuPlaceholder(src, alt) {
     <img
       src="${src}"
       alt="${alt}"
-      loading="lazy"
-      onerror="this.parentElement.innerHTML='${placeholderHTML().replace(/'/g, "\\'")}'">
+      loading="lazy">
   `;
 }
 
@@ -333,8 +442,8 @@ function abrirModal(indiceCapitulo) {
   const thumbsEl = document.getElementById('modal-thumbs');
   thumbsEl.innerHTML = '';
   cap.fotos.forEach((f, i) => {
-    const el = document.createElement(f.src ? 'img' : 'div');
-    if (f.src) {
+    const el = document.createElement(f.src && f.tipo !== 'video' ? 'img' : 'div');
+    if (f.src && f.tipo !== 'video') {
       el.src = f.src;
       el.alt = f.legenda || `Foto ${i + 1}`;
       el.className = 'thumb';
@@ -348,7 +457,7 @@ function abrirModal(indiceCapitulo) {
       };
     } else {
       el.className = 'thumb-placeholder';
-      el.textContent = '🖼';
+      el.textContent = f.tipo === 'video' ? '▶' : '🖼';
     }
     el.addEventListener('click', () => irParaFoto(i));
     if (i === 0) el.classList.add('ativa');
@@ -367,6 +476,7 @@ function abrirModal(indiceCapitulo) {
 function fecharModal() {
   const modal = document.getElementById('modal-capitulo');
   if (!modal) return;
+  document.getElementById('modal-video-principal')?.pause();
   modal.classList.remove('aberto');
   document.body.style.overflow = '';
 }
@@ -377,6 +487,7 @@ function irParaFoto(idx, animar = true) {
   if (!foto) return;
 
   const imgEl    = document.getElementById('modal-foto-principal');
+  const videoEl  = document.getElementById('modal-video-principal');
   const legEl    = document.getElementById('modal-legenda');
   const indEl    = document.getElementById('modal-indicador');
   const btnAntes = document.getElementById('modal-antes');
@@ -384,9 +495,10 @@ function irParaFoto(idx, animar = true) {
 
   if (animar) {
     imgEl.classList.add('trocando');
-    setTimeout(() => fazerTrocaFoto(foto, imgEl, legEl), 180);
+    videoEl?.classList.add('trocando');
+    setTimeout(() => fazerTrocaFoto(foto, imgEl, videoEl, legEl), 180);
   } else {
-    fazerTrocaFoto(foto, imgEl, legEl);
+    fazerTrocaFoto(foto, imgEl, videoEl, legEl);
   }
 
   fotoAtual = idx;
@@ -400,8 +512,19 @@ function irParaFoto(idx, animar = true) {
   });
 }
 
-function fazerTrocaFoto(foto, imgEl, legEl) {
-  if (foto.src) {
+function fazerTrocaFoto(foto, imgEl, videoEl, legEl) {
+  if (videoEl) {
+    videoEl.pause();
+    videoEl.removeAttribute('src');
+    videoEl.load();
+    videoEl.style.display = 'none';
+  }
+
+  if (foto.src && foto.tipo === 'video' && videoEl) {
+    imgEl.style.display = 'none';
+    videoEl.src = foto.src;
+    videoEl.style.display = '';
+  } else if (foto.src) {
     imgEl.src = foto.src;
     imgEl.alt = foto.legenda || '';
     imgEl.style.display = '';
@@ -413,6 +536,7 @@ function fazerTrocaFoto(foto, imgEl, legEl) {
   }
   legEl.textContent = foto.legenda || '';
   imgEl.classList.remove('trocando');
+  videoEl?.classList.remove('trocando');
 }
 
 function navegarFoto(direcao) {
@@ -694,4 +818,33 @@ function iniciarScrollReveal() {
   );
 
   alvo.forEach(el => obs.observe(el));
+}
+
+function iniciarCartaOnline() {
+  const btnAbrir = document.getElementById('btn-carta-online');
+  const modal = document.getElementById('modal-carta-online');
+  const btnFechar = document.getElementById('btn-fechar-carta-online');
+
+  if (!btnAbrir || !modal || !btnFechar) return;
+
+  function abrirCarta() {
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    btnFechar.focus();
+  }
+
+  function fecharCarta() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    btnAbrir.focus();
+  }
+
+  btnAbrir.addEventListener('click', abrirCarta);
+  btnFechar.addEventListener('click', fecharCarta);
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) fecharCarta();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !modal.hidden) fecharCarta();
+  });
 }
