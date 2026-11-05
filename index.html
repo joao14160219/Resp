@@ -3,43 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
+  <meta name="description" content="Duas cartas, escritas em momentos diferentes." />
   <title>Para você</title>
   <style>
-    /* ── Paleta pôr do sol (mesma do index.html) ── */
+    /* ── Paleta pôr do sol ── */
     :root {
-      --cor-fundo: #0f0b07;
-      --cor-entardecer: #2a1a08;
-      --cor-sol-claro: #ffd27a;
-      --cor-texto: #f5ead8;
-      --cor-texto-suave: #c9b69a;
-      --cor-destaque: #f5b83d;
-      --ceu-por-do-sol:
-        radial-gradient(ellipse 120% 55% at 50% 100%, rgba(245,150,40,0.38) 0%, rgba(150,75,10,0.22) 45%, transparent 75%),
-        linear-gradient(to bottom, var(--cor-fundo) 0%, var(--cor-entardecer) 100%);
+      --fundo:        #0f0b07;
+      --fundo-card:   #1c140b;
+      --entardecer:   #2a1a08;
+      --sol:          #f5b83d;
+      --sol-claro:    #ffd27a;
+      --brasa:        #f08a2c;
+      --texto:        #f5ead8;
+      --texto-suave:  #c9b69a;
       --fonte-titulo: 'Georgia', 'Times New Roman', serif;
-      --fonte-corpo: 'Helvetica Neue', 'Arial', sans-serif;
-      --raio: 10px;
-      --transicao: 0.35s ease;
+      --fonte-corpo:  'Helvetica Neue', 'Arial', sans-serif;
+      --raio:         10px;
+      --transicao:    0.35s ease;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { min-height: 100%; }
     body {
-      background: var(--cor-fundo);
-      color: var(--cor-texto);
+      background: var(--fundo);
+      color: var(--texto);
       font-family: var(--fonte-corpo);
       line-height: 1.7;
     }
-    [hidden] { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--sol); outline-offset: 3px; }
 
     @keyframes surgir {
       from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: none; }
     }
-    @keyframes tremer {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-8px); }
-      40%, 80% { transform: translateX(8px); }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       ESCOLHA — tela inicial
+    ══════════════════════════════════════════════════════ */
+    .escolha {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 20px;
+      text-align: center;
+      /* sol se pondo na base da tela */
+      background:
+        radial-gradient(ellipse 120% 55% at 50% 100%, rgba(245,150,40,0.38) 0%, rgba(150,75,10,0.22) 45%, transparent 75%),
+        linear-gradient(to bottom, var(--fundo) 0%, var(--entardecer) 100%);
+    }
+    .escolha-conteudo {
+      width: 100%;
+      max-width: 620px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .escolha-conteudo > * {
+      opacity: 0;
+      animation: surgir 0.8s ease forwards;
+    }
+    .escolha-conteudo > :nth-child(2) { animation-delay: 0.3s; }
+    .escolha-conteudo > :nth-child(3) { animation-delay: 0.6s; }
+    .escolha-conteudo > :nth-child(4) { animation-delay: 0.9s; }
+    .escolha-conteudo > :nth-child(5) { animation-delay: 1.3s; }
+
+    .escolha-coracao {
+      font-size: 2.6rem;
+      line-height: 1;
+      color: var(--sol);
+      text-shadow: 0 0 24px rgba(245,184,61,0.55);
+      margin-bottom: 24px;
+    }
+    .escolha-conteudo > .escolha-coracao {
+      animation: surgir 0.8s ease forwards, batida 1.6s ease-in-out 0.8s infinite;
+    }
+    @keyframes batida {
+      0%, 100% { transform: scale(1); }
+      15%      { transform: scale(1.18); }
+      30%      { transform: scale(1); }
+      45%      { transform: scale(1.1); }
     }
 
     .eyebrow {
@@ -47,251 +92,128 @@
       font-size: 0.72rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--cor-destaque);
+      color: var(--sol);
       margin-bottom: 16px;
     }
-
-    /* ══════════ PERGUNTA ══════════ */
-    #pergunta {
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 24px;
-      text-align: center;
-      background: var(--ceu-por-do-sol);
-    }
-    .pergunta-conteudo {
-      width: 100%;
-      max-width: 420px;
-      animation: surgir 0.8s ease forwards;
-    }
-    .pergunta-titulo {
+    .escolha-titulo {
       font-family: var(--fonte-titulo);
-      font-size: clamp(1.5rem, 6vw, 2.2rem);
+      font-size: clamp(1.8rem, 7vw, 2.8rem);
       font-weight: 400;
-      line-height: 1.3;
+      line-height: 1.2;
       color: #fff;
-      margin-bottom: 32px;
+      margin-bottom: 14px;
     }
-    #form-pergunta {
+    .escolha-texto {
+      font-size: 0.95rem;
+      color: var(--texto-suave);
+      max-width: 400px;
+      margin-bottom: 36px;
+    }
+
+    /* Os dois cards */
+    .escolha-opcoes {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .opcao-carta {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 22px 22px 20px;
+      text-align: left;
+      background: rgba(28,20,11,0.85);
+      border: 1px solid rgba(245,184,61,0.22);
+      border-radius: var(--raio);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      transition: transform var(--transicao), border-color var(--transicao), background var(--transicao);
     }
-    #form-pergunta.errou { animation: tremer 0.4s ease; }
-    #resposta {
-      width: 100%;
-      padding: 14px 16px;
-      font: inherit;
-      font-size: 1rem;
-      text-align: center;
-      color: var(--cor-texto);
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(245,184,61,0.4);
-      border-radius: 6px;
-      outline: none;
-      transition: border-color var(--transicao);
+    .opcao-carta:hover {
+      transform: translateY(-4px);
+      border-color: rgba(245,184,61,0.6);
+      background: rgba(40,28,13,0.95);
     }
-    #resposta:focus { border-color: var(--cor-destaque); }
-    #resposta::placeholder { color: rgba(184,168,160,0.5); }
-    .btn {
-      padding: 13px 28px;
-      border: none;
-      border-radius: 4px;
-      font: inherit;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
+    .opcao-carta:active { transform: scale(0.98); }
+
+    .opcao-rotulo {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #2a1806;
-      background: linear-gradient(135deg, var(--cor-sol-claro) 0%, var(--cor-destaque) 100%);
-      cursor: pointer;
-      transition: filter var(--transicao);
+      color: var(--texto-suave);
     }
-    .btn:hover { filter: brightness(1.08); }
-    .pergunta-erro {
-      min-height: 1.6em;
-      margin-top: 14px;
-      font-size: 0.85rem;
-      font-style: italic;
-      color: var(--cor-destaque);
-    }
-
-    /* Link discreto para a carta antiga */
-    .link-antiga {
-      display: inline-block;
-      margin-top: 22px;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      color: var(--cor-texto-suave);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(245,184,61,0.35);
-      padding-bottom: 2px;
-      transition: color var(--transicao), border-color var(--transicao);
-    }
-    .link-antiga:hover { color: var(--cor-sol-claro); border-color: var(--cor-sol-claro); }
-    .link-antiga::before { content: '← '; }
-
-    /* ══════════ CARTA ══════════ */
-    #carta {
-      min-height: 100svh;
-      padding: 72px 22px 96px;
-      background:
-        radial-gradient(ellipse 140% 380px at 50% 0%, rgba(245,150,40,0.22) 0%, transparent 70%),
-        var(--cor-fundo);
-    }
-    .carta-rodape {
-      margin-top: 48px;
-      padding-top: 24px;
-      border-top: 1px solid rgba(245,184,61,0.18);
-    }
-    .carta-inner {
-      max-width: 620px;
-      margin: 0 auto;
-      animation: surgir 1s ease forwards;
-    }
-    .carta-titulo {
+    .opcao-titulo {
       font-family: var(--fonte-titulo);
-      font-size: clamp(1.6rem, 6vw, 2.4rem);
+      font-size: 1.35rem;
       font-weight: 400;
-      line-height: 1.25;
       color: #fff;
-      margin-bottom: 28px;
     }
-    .carta-texto {
-      font-size: 1rem;
-      line-height: 1.9;
-      color: var(--cor-texto-suave);
+    .opcao-desc {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--texto-suave);
     }
-    .carta-texto p + p { margin-top: 18px; }
-    .carta-texto strong { color: var(--cor-texto); font-weight: 600; }
+    .opcao-acao {
+      margin-top: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sol);
+    }
+    .opcao-acao::after { content: ' →'; }
+
+    /* Carta nova em destaque — dourado do sol */
+    .opcao-carta.nova {
+      background: linear-gradient(145deg, rgba(120,70,12,0.75) 0%, rgba(28,20,11,0.9) 100%);
+      border-color: rgba(245,184,61,0.5);
+    }
+    .opcao-carta.nova .opcao-rotulo { color: var(--sol-claro); }
+
+    .escolha-dica {
+      margin-top: 26px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: rgba(201,182,154,0.55);
+    }
+
+    @media (min-width: 640px) {
+      .escolha-opcoes { grid-template-columns: 1fr 1fr; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- ════════ 1. PERGUNTA ════════ -->
-  <main id="pergunta" hidden>
-    <div class="pergunta-conteudo">
-      <span class="eyebrow">Antes de entrar</span>
-      <h1 class="pergunta-titulo">Qual era o prato que o João mais fazia para a Letícia?</h1>
+  <main class="escolha">
+    <div class="escolha-conteudo">
+      <div class="escolha-coracao" aria-hidden="true">♥</div>
+      <span class="eyebrow">Para você</span>
+      <h1 class="escolha-titulo">Duas cartas,<br>dois momentos</h1>
+      <p class="escolha-texto">
+        Uma foi escrita antes, outra agora.
+        Escolha por onde quer começar.
+      </p>
 
-      <form id="form-pergunta" autocomplete="off">
-        <input id="resposta" type="text" placeholder="Sua resposta" aria-label="Sua resposta" required />
-        <button class="btn" type="submit">Entrar</button>
-      </form>
-      <p id="pergunta-erro" class="pergunta-erro" role="alert"></p>
+      <nav class="escolha-opcoes" aria-label="Escolha uma carta">
+        <!-- Leva para a Retrospectiva atual -->
+        <a href="carta-antiga.html" class="opcao-carta">
+          <span class="opcao-rotulo">Carta antiga</span>
+          <span class="opcao-titulo">Nossa Retrospectiva</span>
+          <span class="opcao-desc">As fotos, os capítulos e a primeira carta que escrevi.</span>
+          <span class="opcao-acao">Abrir</span>
+        </a>
 
-      <a href="carta-antiga.html" class="link-antiga">Ver a carta antiga</a>
+        <!-- Leva para a carta nova (só pode ser lida uma vez, por 10 min) -->
+        <a href="carta-nova.html" class="opcao-carta nova">
+          <span class="opcao-rotulo">Carta nova</span>
+          <span class="opcao-titulo">O que eu sinto hoje</span>
+          <span class="opcao-desc">Escrita agora, com o que eu aprendi desde então.</span>
+          <span class="opcao-acao">Abrir</span>
+        </a>
+      </nav>
     </div>
   </main>
 
-  <!-- ════════ 2. CARTA (só aparece após acertar) ════════ -->
-  <div id="carta" hidden></div>
-
-  <!-- ★ ESCREVA A CARTA AQUI DENTRO DO <template>
-       (o template não aparece na tela até ela acertar a resposta) -->
-  <template id="conteudo-carta">
-    <article class="carta-inner">
-      <span class="eyebrow">Carta nova</span>
-
-      <div class="carta-texto">
-        <p>Letícia,</p>
-
-        <p>Se você chegou até aqui, significa que esse QR Code sobreviveu mais do que eu imaginava.</p>
-
-        <p>Escrevo isso no dia em que completaríamos um ano de namoro.</p>
-
-        <p>Faz bastante tempo desde que tudo aconteceu. Tempo suficiente para muita coisa mudar, inclusive eu.</p>
-
-        <p>Não escrevo isso esperando resposta, explicação ou reencontro. Acho que algumas perguntas simplesmente perderam a importância que pareciam ter naquela época.</p>
-
-        <p>Queria apenas deixar registrado algo que talvez eu nunca diga em voz alta.</p>
-
-        <p>Apesar de tudo que aconteceu, eu não levo raiva de você.</p>
-
-        <p>Durante muito tempo tentei entender o que deu errado, quem tinha razão e o que poderia ter sido diferente. Hoje isso já não importa tanto.</p>
-
-        <p>O que ficou foram as lembranças.</p>
-
-        <p>Algumas felizes, algumas dolorosas, mas todas parte de uma história que foi muito importante para mim.</p>
-
-        <p>Ainda tenho curiosidade sobre pequenas coisas que provavelmente nunca vou saber. Como foi sua primeira romaria andando, por exemplo.</p>
-
-        <p>E tudo bem.</p>
-
-        <p>A vida segue para todo mundo.</p>
-
-        <p>Também preciso admitir uma coisa que provavelmente não faria sentido dizer naquela época: no aniversário da Rafa, você estava muito linda.</p>
-
-        <p>Talvez porque o tempo tenha passado, talvez porque já não exista nada a provar.</p>
-
-        <p>Obrigado pelos quase 1 ano desde nosso primeiro beijo.</p>
-
-        <p>Pelas viagens, pelas conversas, pelas risadas, pelas discussões, pelas conquistas e por todos os momentos que fizeram parte da nossa história.</p>
-
-        <p>Você foi uma parte importante da minha vida e da pessoa que me tornei.</p>
-
-        <p>Espero que a vida tenha sido gentil com você, com sua família, com a Manu e com a Bela.</p>
-
-        <p>Se um dia você ler isso, espero que esteja feliz.</p>
-
-        <p>Cuide-se.</p>
-
-        <p><strong>Jô</strong></p>
-      </div>
-
-      <div class="carta-rodape">
-        <a href="carta-antiga.html" class="link-antiga" target="_blank" rel="noopener">Ver a carta antiga</a>
-      </div>
-    </article>
-  </template>
-
-  <script>
-    'use strict';
-
-    /* ★ CONFIGURAÇÕES */
-    const RESPOSTA_CERTA = 'carbonara';
-
-    // "Carbonara ", "CARBONARÁ" etc. contam como certo
-    function normalizar(txt) {
-      return txt.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    }
-
-    function abrirCarta() {
-      const carta  = document.getElementById('carta');
-      const modelo = document.getElementById('conteudo-carta');
-
-      document.getElementById('pergunta').hidden = true;
-      carta.appendChild(modelo.content.cloneNode(true));
-      carta.hidden = false;
-      window.scrollTo(0, 0);
-    }
-
-    function iniciar() {
-      const pergunta = document.getElementById('pergunta');
-      const form     = document.getElementById('form-pergunta');
-      const campo    = document.getElementById('resposta');
-      const erro     = document.getElementById('pergunta-erro');
-
-      pergunta.hidden = false;
-      campo.focus();
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (normalizar(campo.value) === RESPOSTA_CERTA) {
-          abrirCarta();
-        } else {
-          erro.textContent = 'Hmm… não foi esse. Tenta de novo.';
-          form.classList.remove('errou');
-          void form.offsetWidth; // reinicia a animação de tremer
-          form.classList.add('errou');
-          campo.select();
-        }
-      });
-    }
-
-    iniciar();
-  </script>
 </body>
 </html>
