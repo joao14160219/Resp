@@ -36,11 +36,6 @@
       from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: none; }
     }
-    @keyframes tremer {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-8px); }
-      40%, 80% { transform: translateX(8px); }
-    }
 
     .eyebrow {
       display: inline-block;
@@ -49,73 +44,6 @@
       text-transform: uppercase;
       color: var(--cor-destaque);
       margin-bottom: 16px;
-    }
-
-    /* ══════════ PERGUNTA ══════════ */
-    #pergunta {
-      min-height: 100svh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 48px 24px;
-      text-align: center;
-      background: var(--ceu-por-do-sol);
-    }
-    .pergunta-conteudo {
-      width: 100%;
-      max-width: 420px;
-      animation: surgir 0.8s ease forwards;
-    }
-    .pergunta-titulo {
-      font-family: var(--fonte-titulo);
-      font-size: clamp(1.5rem, 6vw, 2.2rem);
-      font-weight: 400;
-      line-height: 1.3;
-      color: #fff;
-      margin-bottom: 32px;
-    }
-    #form-pergunta {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    #form-pergunta.errou { animation: tremer 0.4s ease; }
-    #resposta {
-      width: 100%;
-      padding: 14px 16px;
-      font: inherit;
-      font-size: 1rem;
-      text-align: center;
-      color: var(--cor-texto);
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(245,184,61,0.4);
-      border-radius: 6px;
-      outline: none;
-      transition: border-color var(--transicao);
-    }
-    #resposta:focus { border-color: var(--cor-destaque); }
-    #resposta::placeholder { color: rgba(184,168,160,0.5); }
-    .btn {
-      padding: 13px 28px;
-      border: none;
-      border-radius: 4px;
-      font: inherit;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #2a1806;
-      background: linear-gradient(135deg, var(--cor-sol-claro) 0%, var(--cor-destaque) 100%);
-      cursor: pointer;
-      transition: filter var(--transicao);
-    }
-    .btn:hover { filter: brightness(1.08); }
-    .pergunta-erro {
-      min-height: 1.6em;
-      margin-top: 14px;
-      font-size: 0.85rem;
-      font-style: italic;
-      color: var(--cor-destaque);
     }
 
     /* Link discreto para a carta antiga */
@@ -170,27 +98,11 @@
 </head>
 <body>
 
-  <!-- ════════ 1. PERGUNTA ════════ -->
-  <main id="pergunta" hidden>
-    <div class="pergunta-conteudo">
-      <span class="eyebrow">Antes de entrar</span>
-      <h1 class="pergunta-titulo">Qual era o prato que o João mais fazia para a Letícia?</h1>
-
-      <form id="form-pergunta" autocomplete="off">
-        <input id="resposta" type="text" placeholder="Sua resposta" aria-label="Sua resposta" required />
-        <button class="btn" type="submit">Entrar</button>
-      </form>
-      <p id="pergunta-erro" class="pergunta-erro" role="alert"></p>
-
-      <a href="carta-antiga.html" class="link-antiga">Ver a carta antiga</a>
-    </div>
-  </main>
-
-  <!-- ════════ 2. CARTA (só aparece após acertar) ════════ -->
+  <!-- A pergunta do carbonara fica no index.html.
+       Quem abrir esta página sem ter respondido volta para lá. -->
   <div id="carta" hidden></div>
 
-  <!-- ★ ESCREVA A CARTA AQUI DENTRO DO <template>
-       (o template não aparece na tela até ela acertar a resposta) -->
+  <!-- ★ TEXTO DA CARTA -->
   <template id="conteudo-carta">
     <article class="carta-inner">
       <span class="eyebrow">Carta nova</span>
@@ -243,7 +155,7 @@
       </div>
 
       <div class="carta-rodape">
-        <a href="carta-antiga.html" class="link-antiga" target="_blank" rel="noopener">Ver a carta antiga</a>
+        <a href="carta-antiga.html" class="link-antiga">Ver a carta antiga</a>
       </div>
     </article>
   </template>
@@ -251,48 +163,21 @@
   <script>
     'use strict';
 
-    /* ★ CONFIGURAÇÕES */
-    const RESPOSTA_CERTA = 'carbonara';
+    // Gravada pelo index.html quando ela acerta "carbonara"
+    const CHAVE_RESPONDEU = 'cartas.respondeu';
 
-    // "Carbonara ", "CARBONARÁ" etc. contam como certo
-    function normalizar(txt) {
-      return txt.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    function respondeu() {
+      try { return localStorage.getItem(CHAVE_RESPONDEU) === '1'; }
+      catch (e) { return true; } // sem acesso ao armazenamento: mostra a carta
     }
 
-    function abrirCarta() {
-      const carta  = document.getElementById('carta');
-      const modelo = document.getElementById('conteudo-carta');
-
-      document.getElementById('pergunta').hidden = true;
-      carta.appendChild(modelo.content.cloneNode(true));
+    if (!respondeu()) {
+      location.replace('index.html');
+    } else {
+      const carta = document.getElementById('carta');
+      carta.appendChild(document.getElementById('conteudo-carta').content.cloneNode(true));
       carta.hidden = false;
-      window.scrollTo(0, 0);
     }
-
-    function iniciar() {
-      const pergunta = document.getElementById('pergunta');
-      const form     = document.getElementById('form-pergunta');
-      const campo    = document.getElementById('resposta');
-      const erro     = document.getElementById('pergunta-erro');
-
-      pergunta.hidden = false;
-      campo.focus();
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (normalizar(campo.value) === RESPOSTA_CERTA) {
-          abrirCarta();
-        } else {
-          erro.textContent = 'Hmm… não foi esse. Tenta de novo.';
-          form.classList.remove('errou');
-          void form.offsetWidth; // reinicia a animação de tremer
-          form.classList.add('errou');
-          campo.select();
-        }
-      });
-    }
-
-    iniciar();
   </script>
 </body>
 </html>
