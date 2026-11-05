@@ -1,37 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Para você</title>
+  <style>
+    /* ── Paleta pôr do sol (mesma do index.html) ── */
+    :root {
+      --cor-fundo: #0f0b07;
+      --cor-entardecer: #2a1a08;
+      --cor-sol-claro: #ffd27a;
+      --cor-texto: #f5ead8;
+      --cor-texto-suave: #c9b69a;
+      --cor-destaque: #f5b83d;
+      --ceu-por-do-sol:
+        radial-gradient(ellipse 120% 55% at 50% 100%, rgba(245,150,40,0.38) 0%, rgba(150,75,10,0.22) 45%, transparent 75%),
+        linear-gradient(to bottom, var(--cor-fundo) 0%, var(--cor-entardecer) 100%);
+      --fonte-titulo: 'Georgia', 'Times New Roman', serif;
+      --fonte-corpo: 'Helvetica Neue', 'Arial', sans-serif;
+      --raio: 10px;
+      --transicao: 0.35s ease;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { min-height: 100%; }
+    body {
+      background: var(--cor-fundo);
+      color: var(--cor-texto);
+      font-family: var(--fonte-corpo);
+      line-height: 1.7;
+    }
+    [hidden] { display: none !important; }
+
+    @keyframes surgir {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes tremer {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-8px); }
+      40%, 80% { transform: translateX(8px); }
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cor-destaque);
+      margin-bottom: 16px;
+    }
+
+    /* ══════════ PERGUNTA ══════════ */
+    #pergunta {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      text-align: center;
+      background: var(--ceu-por-do-sol);
+    }
+    .pergunta-conteudo {
+      width: 100%;
+      max-width: 420px;
+      animation: surgir 0.8s ease forwards;
+    }
+    .pergunta-titulo {
+      font-family: var(--fonte-titulo);
+      font-size: clamp(1.5rem, 6vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.3;
+      color: #fff;
+      margin-bottom: 32px;
+    }
+    #form-pergunta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    #form-pergunta.errou { animation: tremer 0.4s ease; }
+    #resposta {
+      width: 100%;
+      padding: 14px 16px;
+      font: inherit;
+      font-size: 1rem;
+      text-align: center;
+      color: var(--cor-texto);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(245,184,61,0.4);
+      border-radius: 6px;
+      outline: none;
+      transition: border-color var(--transicao);
+    }
+    #resposta:focus { border-color: var(--cor-destaque); }
+    #resposta::placeholder { color: rgba(184,168,160,0.5); }
+    .btn {
+      padding: 13px 28px;
+      border: none;
+      border-radius: 4px;
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #2a1806;
+      background: linear-gradient(135deg, var(--cor-sol-claro) 0%, var(--cor-destaque) 100%);
+      cursor: pointer;
+      transition: filter var(--transicao);
+    }
+    .btn:hover { filter: brightness(1.08); }
+    .pergunta-erro {
+      min-height: 1.6em;
+      margin-top: 14px;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--cor-destaque);
+    }
+
+    /* Link discreto para a carta antiga */
+    .link-antiga {
+      display: inline-block;
+      margin-top: 22px;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      color: var(--cor-texto-suave);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(245,184,61,0.35);
+      padding-bottom: 2px;
+      transition: color var(--transicao), border-color var(--transicao);
+    }
+    .link-antiga:hover { color: var(--cor-sol-claro); border-color: var(--cor-sol-claro); }
+    .link-antiga::before { content: '← '; }
+
+    /* ══════════ CARTA ══════════ */
+    #carta {
+      min-height: 100svh;
+      padding: 72px 22px 96px;
+      background:
+        radial-gradient(ellipse 140% 380px at 50% 0%, rgba(245,150,40,0.22) 0%, transparent 70%),
+        var(--cor-fundo);
+    }
+    .carta-rodape {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(245,184,61,0.18);
+    }
+    .carta-inner {
+      max-width: 620px;
+      margin: 0 auto;
+      animation: surgir 1s ease forwards;
+    }
+    .carta-titulo {
+      font-family: var(--fonte-titulo);
+      font-size: clamp(1.6rem, 6vw, 2.4rem);
+      font-weight: 400;
+      line-height: 1.25;
+      color: #fff;
+      margin-bottom: 28px;
+    }
+    .carta-texto {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--cor-texto-suave);
+    }
+    .carta-texto p + p { margin-top: 18px; }
+    .carta-texto strong { color: var(--cor-texto); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <!-- ════════ 1. PERGUNTA ════════ -->
+  <main id="pergunta" hidden>
+    <div class="pergunta-conteudo">
+      <span class="eyebrow">Antes de entrar</span>
+      <h1 class="pergunta-titulo">Qual era o prato que o João mais fazia para a Letícia?</h1>
+
+      <form id="form-pergunta" autocomplete="off">
+        <input id="resposta" type="text" placeholder="Sua resposta" aria-label="Sua resposta" required />
+        <button class="btn" type="submit">Entrar</button>
+      </form>
+      <p id="pergunta-erro" class="pergunta-erro" role="alert"></p>
+
+      <a href="carta-antiga.html" class="link-antiga">Ver a carta antiga</a>
+    </div>
+  </main>
+
+  <!-- ════════ 2. CARTA (só aparece após acertar) ════════ -->
+  <div id="carta" hidden></div>
+
+  <!-- ★ ESCREVA A CARTA AQUI DENTRO DO <template>
+       (o template não aparece na tela até ela acertar a resposta) -->
+  <template id="conteudo-carta">
+    <article class="carta-inner">
+      <span class="eyebrow">Carta nova</span>
+      <h1 class="carta-titulo">O que eu sinto hoje</h1>
+
+      <div class="carta-texto">
+        <p>Letícia,</p>
+
+        <p>Se você chegou até aqui, significa que esse QR Code sobreviveu mais do que eu imaginava.</p>
+
+        <p>Escrevo isso no dia em que completaríamos um ano de namoro.</p>
+
+        <p>Faz bastante tempo desde que tudo aconteceu. Tempo suficiente para muita coisa mudar, inclusive eu.</p>
+
+        <p>Não escrevo isso esperando resposta, explicação ou reencontro. Acho que algumas perguntas simplesmente perderam a importância que pareciam ter naquela época.</p>
+
+        <p>Queria apenas deixar registrado algo que talvez eu nunca diga em voz alta.</p>
+
+        <p>Apesar de tudo que aconteceu, eu não levo raiva de você.</p>
+
+        <p>Durante muito tempo tentei entender o que deu errado, quem tinha razão e o que poderia ter sido diferente. Hoje isso já não importa tanto.</p>
+
+        <p>O que ficou foram as lembranças.</p>
+
+        <p>Algumas felizes, algumas dolorosas, mas todas parte de uma história que foi muito importante para mim.</p>
+
+        <p>Ainda tenho curiosidade sobre pequenas coisas que provavelmente nunca vou saber. Como foi sua primeira romaria andando, por exemplo.</p>
+
+        <p>E tudo bem.</p>
+
+        <p>A vida segue para todo mundo.</p>
+
+        <p>Também preciso admitir uma coisa que provavelmente não faria sentido dizer naquela época: no aniversário da Rafa, você estava muito linda.</p>
+
+        <p>Talvez porque o tempo tenha passado, talvez porque já não exista nada a provar.</p>
+
+        <p>Obrigado pelos 456 dias.</p>
+
+        <p>Pelas viagens, pelas conversas, pelas risadas, pelas discussões, pelas conquistas e por todos os momentos que fizeram parte da nossa história.</p>
+
+        <p>Você foi uma parte importante da minha vida e da pessoa que me tornei.</p>
+
+        <p>Espero que a vida tenha sido gentil com você, com sua família, com a Manu e com a Bela.</p>
+
+        <p>Se um dia você ler isso, espero que esteja feliz.</p>
+
+        <p>Cuide-se.</p>
+
+        <p><strong>Jô</strong></p>
+      </div>
+
+      <div class="carta-rodape">
+        <a href="carta-antiga.html" class="link-antiga" target="_blank" rel="noopener">Ver a carta antiga</a>
+      </div>
+    </article>
+  </template>
+
   <script>
     'use strict';
 
     /* ★ CONFIGURAÇÕES */
     const RESPOSTA_CERTA = 'carbonara';
-    const MINUTOS_ABERTA = 10;   // tempo que a carta fica disponível depois de aberta
-
-    const CHAVE_INICIO = 'cartaNova.inicio';    // quando ela entrou
-    const CHAVE_FIM    = 'cartaNova.encerrada'; // tempo acabou
-    const DURACAO_MS   = MINUTOS_ABERTA * 60 * 1000;
-
-    // localStorage pode falhar (ex.: modo restrito); nesse caso segue sem gravar
-    function ler(chave) {
-      try { return localStorage.getItem(chave); } catch (e) { return null; }
-    }
-    function gravar(chave, valor) {
-      try { localStorage.setItem(chave, valor); } catch (e) {}
-    }
 
     // "Carbonara ", "CARBONARÁ" etc. contam como certo
     function normalizar(txt) {
       return txt.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     }
 
-    function encerrar() {
-      gravar(CHAVE_FIM, '1');
-      document.getElementById('carta').remove();
-      document.getElementById('conteudo-carta').remove();
-      document.getElementById('pergunta').remove();
-      document.title = '';
-      document.body.className = 'encerrado';
-    }
-
-    function abrirCarta(inicio) {
+    function abrirCarta() {
       const carta  = document.getElementById('carta');
       const modelo = document.getElementById('conteudo-carta');
 
@@ -39,29 +267,9 @@
       carta.appendChild(modelo.content.cloneNode(true));
       carta.hidden = false;
       window.scrollTo(0, 0);
-
-      // Sem relógio na tela: quando o tempo acaba, a carta apaga sozinha
-      const resta = Math.max(0, DURACAO_MS - (Date.now() - inicio));
-      setTimeout(() => {
-        carta.classList.add('apagando');
-        setTimeout(encerrar, 2500);
-      }, resta);
     }
 
     function iniciar() {
-      // Tempo já acabou → preto para sempre
-      if (ler(CHAVE_FIM)) { encerrar(); return; }
-
-      // Já entrou antes e ainda está no prazo → abre a carta direto,
-      // sem perguntar de novo (recarregar ou fechar sem querer não zera o tempo)
-      const inicioSalvo = Number(ler(CHAVE_INICIO));
-      if (inicioSalvo) {
-        if (Date.now() - inicioSalvo >= DURACAO_MS) { encerrar(); return; }
-        abrirCarta(inicioSalvo);
-        return;
-      }
-
-      // Primeira vez → pergunta
       const pergunta = document.getElementById('pergunta');
       const form     = document.getElementById('form-pergunta');
       const campo    = document.getElementById('resposta');
@@ -73,9 +281,7 @@
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         if (normalizar(campo.value) === RESPOSTA_CERTA) {
-          const agora = Date.now();
-          gravar(CHAVE_INICIO, String(agora));
-          abrirCarta(agora);
+          abrirCarta();
         } else {
           erro.textContent = 'Hmm… não foi esse. Tenta de novo.';
           form.classList.remove('errou');
@@ -88,3 +294,5 @@
 
     iniciar();
   </script>
+</body>
+</html>
