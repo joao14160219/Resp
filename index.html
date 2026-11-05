@@ -1,410 +1,90 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Uma retrospectiva de momentos que marcaram nossa história." />
-  <title>Retrospectiva</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-
-  <!-- ════════════════════════════════════════════
-       TELA 1 — HERO
-  ════════════════════════════════════════════ -->
-  <section id="hero" aria-label="Início">
-
-    <!-- Fundo com efeito Ken Burns -->
-    <!-- SUBSTITUA a imagem em style.css → #hero-bg { background-image: url('...') } -->
-    <div id="hero-bg" role="presentation" aria-hidden="true"></div>
-
-    <div class="hero-conteudo">
-      <span class="hero-eyebrow">Uma história nossa</span>
-
-      <h1 class="hero-titulo">
-        Nossa<br>Retrospectiva
-      </h1>
-
-      <p class="hero-subtitulo">
-        Alguns momentos merecem ser lembrados com calma,
-        com cuidado — e com a trilha certa tocando ao fundo.
-      </p>
-
-      <p class="hero-nota">
-        Role para descobrir os capítulos dessa história.
-        Cada um guarda fotos, legendas e memórias que só a gente sabe.
-      </p>
-
-      <div class="hero-acoes">
-        <button id="btn-comecar" class="btn btn-primario" aria-label="Começar a retrospectiva">
-          Começar retrospectiva
-        </button>
-
-        <!-- Controle de música -->
-        <button
-          id="ctrl-musica"
-          aria-label="Reproduzir nossa música"
-          title="Nossa música"
-        >
-          <span class="icone-musica" aria-hidden="true">♪</span>
-          <span class="txt-musica">Reproduzir nossa música</span>
-        </button>
-
-        <button
-          id="btn-carta-online"
-          class="btn-carta-online"
-          type="button"
-          aria-haspopup="dialog"
-          aria-controls="modal-carta-online"
-        >
-          Carta online
-        </button>
-      </div>
-    </div>
-
-    <!-- Barra de progresso da música (fixa na base) -->
-    <div
-      id="barra-musica"
-      class="barra-progresso-musica"
-      role="progressbar"
-      aria-label="Progresso da música"
-      aria-valuenow="0"
-      aria-valuemin="0"
-      aria-valuemax="100"
-    ></div>
-  </section>
-
-  <div
-    id="modal-carta-online"
-    class="carta-modal"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="carta-online-titulo"
-    hidden
-  >
-    <div class="carta-modal-painel" role="document">
-      <div class="carta-modal-topo">
-        <div>
-          <p class="hero-eyebrow">Carta online</p>
-          <h2 id="carta-online-titulo" class="carta-modal-titulo">Caso a letra não esteja clara</h2>
-        </div>
-        <button
-          id="btn-fechar-carta-online"
-          class="modal-fechar"
-          type="button"
-          aria-label="Fechar carta"
-          title="Fechar"
-        >x</button>
-      </div>
-
-      <div class="carta-modal-texto">
-  
-      <p>Oi, minha princesa.</p>
-
-      <p>Essa é a minha primeira tentativa de escrever uma carta para você. Espero que goste, porque ela está sendo feita de coração.</p>
-
-      <p>Hoje está sendo o primeiro dia em que estamos realmente sem contato, e está sendo estranho lidar com todo esse silêncio. Em vários momentos, senti vontade de mandar um “bom dia”, já pensar em algum “boa noite” para mais tarde, contar alguma coisa ou simplesmente saber como você está. Mas eu sei que, agora, preciso respeitar o espaço que você escolheu.</p>
-
-      <p>O mais curioso é que esta carta não começou hoje e também não nasceu por causa do que aconteceu. Eu comecei a construí-la no dia 9, antes de te magoar, quando estávamos falando sobre tentar novamente e ainda existia entre nós uma vontade verdadeira de construir um futuro juntos.</p>
-
-      <p>Por isso, algumas partes desta carta foram escritas por um Jô que ainda estava cheio de esperança. Outras estão sendo escritas hoje, por alguém que entende um pouco melhor o peso das próprias atitudes.</p>
-
-      <p>Se eu tivesse mais uma chance antes do fim, eu te diria que nunca foi brincadeira. Tudo o que eu disse para você, cada palavra, cada gesto e cada atitude foram muito verdadeiros. Foi tudo muito de coração.</p>
-
-      <p>Eu te diria também que, mesmo depois de tudo o que passamos, eu escolheria te amar novamente. Na verdade, acho que nunca deixei de te amar. Mas, se pudesse viver tudo outra vez, eu te amaria ainda mais intensamente, mesmo sabendo que existiria o risco de nos machucarmos novamente.</p>
-
-      <p>A verdade é que eu não me arrependo dos dias bons nem dos dias ruins. Não me arrependo dos momentos em que você me fez sorrir, nem daqueles em que chorei por você. Tudo isso fez parte da nossa história e do que nós fomos um para o outro.</p>
-
-      <p>Talvez algumas coisas tenham acontecido porque precisavam acontecer, para que nós entendêssemos o que ainda não conseguíamos enxergar. Mas, apesar de tudo, a nossa história foi incrível para mim. E acho que é justamente por isso que eu viveria tudo novamente: porque eu te amo e porque, mesmo com toda a dor, ter vivido você valeu a pena.</p>
-
-      <p>Nas últimas semanas, Deus colocou em mim um amor por você que eu nunca tinha sentido antes. Pedi a Ele que me perdoasse pelo que fiz e oro para que, um dia, você também consiga me perdoar. Eu não quero viver o resto da minha vida sem você, mas vou respeitar o seu tempo e a sua decisão.</p>
-
-      <p>Eu enxergo isso como a minha tentativa mais sincera. Não como uma forma de te pressionar, nem como uma promessa de que tudo vai se resolver. Mas, assim como um dia você tentou com o coração aberto, eu também queria tentar agora do meu jeito.</p>
-
-      <p>Depois disso, eu vou respeitar o que vier. Se ainda existir em você alguma vontade de nós, eu adoraria que a gente tentasse com mais calma, mais maturidade e mais verdade. Se não existir, eu vou entender que fiz a minha parte e vou respeitar o seu caminho.</p>
-
-      <p><strong>Dia 9, terça-feira.</strong></p>
-
-      <p>Comecei a escrever esta carta xoxonha porque hoje estou muito feliz pelo fim de semana que tivemos. Foram dois dias juntos, quase a frequência com que costumávamos nos ver durante a semana, e foi muito bom sentir isso novamente.</p>
-
-      <p>Pela primeira vez em muito tempo, sinto que estamos conseguindo conversar de verdade, sem transformar tudo em ataques. Está tudo mais leve, mais tranquilo e mais gostoso, e isso me faz pensar que talvez a gente realmente consiga fazer diferente.</p>
-
-      <p>Agora estou ansioso para te ver na sexta. Não porque espero que tudo se resolva de uma vez, mas porque quero aproveitar sua presença, conversar olhando nos seus olhos, sentir você perto de mim e sentir novamente essa paz que aparece quando estamos bem e juntos. Acho que nunca vou me acostumar com a ideia de que um dia você possa não ser mais minha.</p>
-
-      <p><strong>Dia 16.</strong></p>
-
-      <p>Sei que a ordem desta carta está um pouco confusa. Ela começou no dia 9, continuou no dia 15 e agora estou escrevendo no dia 16. Hoje foi um dia de muita reflexão sobre tudo o que vivemos, e acredito que este seja um dos parágrafos finais. Apesar de te amar muito, eu também entendo que não posso continuar te pressionando com a ideia de nós, principalmente estando bloqueado em tudo e precisando respeitar o espaço que você escolheu.</p>
-
-      <p>De todas as reflexões que tive, uma das que mais me tocou foi sobre a sua família. Eu sei que combinamos de não falar sobre isso, mas justamente por eu não ter falado na nossa tentativa de volta, sinto que preciso dedicar um parágrafo a eles.</p>
-
-      <p>Depois daquela nossa conversa no Mackenzie, no dia em que você me deu aquele ultimato sobre irmos para frente ou não, um dos meus maiores medos era conhecer meus sogros. Eu pensava: “e se eles não gostarem de mim?”. Mas, aos poucos, fomos nos aproximando cada vez mais, até chegar o grande dia de conhecer a Fabiana, o Willian e a Manuela.</p>
-
-      <p>E, sinceramente, nem nos meus maiores sonhos eu imaginei que fosse gostar tanto da família que conheci. Eles me acolheram de uma forma que me marcou muito. Em vários momentos, me senti tratado como parte da casa, quase como um filho, e sou muito grato por ter vivido isso.</p>
-
-      <p>Mesmo que nossos caminhos se separem, vou levar sua família como uma referência bonita de acolhimento, carinho e cuidado para qualquer relação que eu viva no futuro.</p>
-
-      <p>Eu amo muito eles e sou profundamente arrependido de pensar que talvez aquela relação que tínhamos nunca mais volte.</p>
-
-      <p>Então, neste trechinho, eu só queria deixar registrado o quanto sou grato por tudo e o quanto eles também foram importantes para mim.</p>
-
-        <p>E pode ter certeza: se um dia a gente voltar, seu pai ainda vai ganhar aquela faca, sua mãe um belo buquê de flores e seu irmão o macarrão pesto que fiquei devendo.</p>
-
-        <p>Também queria relembrar alguns momentos nossos que talvez eu nunca tenha te contado, mas que me marcaram muito.</p>
-
-        <p>O primeiro foi lá no início, quando brigamos por causa de uma brincadeira. Na época, lembro que pensei: “não quero mais”. Mas, no dia seguinte, da forma mais honesta e sincera possível, você me mandou mensagem perguntando se eu estava bravo e dizendo que queria se resolver.</p>
-
-        <p>Foi nesse dia que eu percebi que Letícia já estava escrita na minha história de vida. Eu senti que alguma coisa eu ainda ia viver com essa mulher apaixonante — fosse casar, namorar ou, quem sabe, conversar em uma varanda sobre a vida boa que tivemos, bem velhinhos.</p>
-
-        <p>O segundo foi quando fomos para a praia sozinhos, deitamos na rede e ficamos ali, deixando o tempo passar. Eu nunca tinha sentido uma paz tão grande na minha vida. Com você, parecia que tudo ficava mais leve, mais tranquilo e mais simples.</p>
-
-        <p>Hoje eu percebo que talvez eu devesse ter insistido mais em te entender, para que momentos como aquele durassem muito mais.</p>
-
-        <p>Agora eu preciso assumir o que fiz. Inventar aquela história do vídeo foi errado, imaturo e injusto com você. Eu estava machucado e tinha bebido, mas nada disso justifica ter te colocado naquela situação.</p>
-
-        <p>Eu te causei medo, insegurança e dor, e isso é algo que eu vou carregar como aprendizado. Me desculpa de verdade.</p>
-
-        <p>Independentemente do que você responder no QR code, eu vou respeitar. Se a resposta for sim, eu vou receber isso com carinho e maturidade. Se a resposta for não, eu vou entender que fiz a minha parte e vou respeitar o seu caminho.</p>
-
-        <p>Encerro esta carta dizendo que eu te amo e te desejo tudo de melhor. Que você encontre paz, felicidade e consiga ser a empresária de exportação que tanto sonha em ser.</p>
-
-        <p>Com amor,</p>
-
-        <p><strong>Do seu Jô ❤️</strong></p>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- Áudio — SUBSTITUA pelo caminho do arquivo de música -->
-  <audio
-  id="audio-nossa-musica"
-  src="foi-assim.mp3"
-  preload="none"
-  aria-hidden="true"
-></audio>
-
-
-  <!-- ════════════════════════════════════════════
-       TELA 2 — CAPÍTULOS
-  ════════════════════════════════════════════ -->
-  <section id="capitulos" aria-labelledby="titulo-capitulos">
-
-    <header class="capitulos-cabecalho revelar">
-      <p class="secao-subtitulo" style="margin-bottom: 6px;">
-        Capítulo por capítulo
-      </p>
-      <h2 id="titulo-capitulos" class="secao-titulo">
-        Os momentos que guardaremos para sempre
-      </h2>
-      <div class="linha-divisor" aria-hidden="true"></div>
-      <p class="secao-subtitulo">
-        Cada card abre uma galeria de fotos com as memórias daquele período.
-        Clique para explorar.
-        <br>
-        <br>
-        Se alguns estiverem fora da cronologia releva oq vale a intenção. kkkk
-      </p>
-    </header>
-
-    <!-- Cards construídos pelo script.js via CAPITULOS[] -->
-    <div
-      id="grade-capitulos"
-      class="grade-capitulos"
-      role="list"
-      aria-label="Lista de capítulos"
-    ></div>
-
-  </section>
-
-
-  <!-- ════════════════════════════════════════════
-       MODAL — Galeria de fotos
-  ════════════════════════════════════════════ -->
-  <div
-    id="modal-capitulo"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modal-titulo-cap"
-    tabindex="-1"
-  >
-    <div class="modal-cabecalho">
-      <h2 id="modal-titulo-cap" class="modal-titulo-cap"></h2>
-      <button
-        id="modal-fechar"
-        class="modal-fechar"
-        aria-label="Fechar galeria"
-        title="Fechar (Esc)"
-      >✕</button>
-    </div>
-
-    <div class="modal-carrossel">
-      <img
-        id="modal-foto-principal"
-        class="foto-principal"
-        src=""
-        alt=""
-      />
-      <video
-        id="modal-video-principal"
-        class="foto-principal"
-        controls
-        playsinline
-        style="display:none;"
-      ></video>
-
-      <p id="modal-legenda" class="foto-legenda"></p>
-
-      <nav class="modal-nav" aria-label="Navegação de fotos">
-        <button
-          id="modal-antes"
-          class="modal-nav-btn"
-          aria-label="Foto anterior"
-          disabled
-        >‹</button>
-
-        <span id="modal-indicador" class="modal-indicador" aria-live="polite"></span>
-
-        <button
-          id="modal-depois"
-          class="modal-nav-btn"
-          aria-label="Próxima foto"
-        >›</button>
-      </nav>
-
-      <!-- Miniaturas geradas pelo script.js -->
-      <div
-        id="modal-thumbs"
-        class="modal-thumbs"
-        role="list"
-        aria-label="Miniaturas das fotos"
-      ></div>
-    </div>
-  </div>
-
-
-  <!-- ════════════════════════════════════════════
-       SEÇÃO DESTAQUE
-  ════════════════════════════════════════════ -->
-  <section id="destaque" aria-labelledby="titulo-destaque">
-    <div class="destaque-inner">
-
-      <div class="destaque-img-wrap">
-        <!-- SUBSTITUA pelo caminho da sua foto de destaque -->
-        <img
-          src="assets/images/destaque.jpg"
-          alt="Foto de destaque"
-          loading="lazy"
-          onerror="this.style.display='none'"
-        />
-      </div>
-
-      <div class="destaque-texto revelar">
-        <p class="destaque-eyebrow">Em destaque</p>
-        <h2 id="titulo-destaque" class="destaque-titulo">
-          Gostaria que a gente tentasse reconstruir o nosso nós. 
-        </h2>
-        <p class="destaque-corpo">
-          Se ainda existir um caminho de volta, talvez ele comece juntando, peça por peça, o que nunca deixou de importar.
-        </p>
-        <button id="btn-dest-continuar" class="btn btn-primario">
-          Continuar a história
-        </button>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ════════════════════════════════════════════
-       QUEBRA-CABEÇA
-  ════════════════════════════════════════════ -->
-  <section id="quebra-cabeca" class="secao" aria-labelledby="titulo-puzzle">
-
-    <div class="revelar" style="text-align:center; margin-bottom: 40px;">
-      <p class="secao-subtitulo" style="margin: 0 auto 6px;">Um pequeno desafio</p>
-      <h2 id="titulo-puzzle" class="secao-titulo" style="margin-bottom: 8px;">
-        Monte a foto e descubra a surpresa
-      </h2>
-      <div class="linha-divisor" style="margin: 12px auto 0;" aria-hidden="true"></div>
-    </div>
-
-    <!-- Grade do puzzle — construída pelo script.js -->
-    <div
-      id="puzzle-grid"
-      class="puzzle-grid"
-      role="grid"
-      aria-label="Quebra-cabeça — arraste as peças para montar a imagem"
-    ></div>
-
-    <!-- Mensagem de conclusão -->
-    <div id="puzzle-concluido" class="puzzle-concluido" role="status" aria-live="polite">
-      <p class="puzzle-msg-titulo">🎉 Você montou!</p>
-      <p class="puzzle-msg-sub">
-        Algumas memórias, quando remontadas, ficam ainda mais bonitas.
-      </p>
-      <button id="btn-puzzle-continuar" class="btn btn-primario">
-        Ver a mensagem final
-      </button>
-    </div>
-
-    <!-- Controles -->
-    <div class="puzzle-controles" style="margin-top: 20px;">
-      <button id="btn-recomecar-puzzle" class="btn btn-secundario">
-        Embaralhar de novo
-      </button>
-    </div>
-
-    <!-- Canvas do confetti -->
-    <canvas
-      id="puzzle-confetti"
-      class="puzzle-confetti"
-      style="display:none;"
-      aria-hidden="true"
-    ></canvas>
-
-  </section>
-
-
-  <!-- ════════════════════════════════════════════
-       SEÇÃO FINAL
-  ════════════════════════════════════════════ -->
-  <section id="final" aria-labelledby="titulo-final">
-    <div class="final-inner revelar">
-
-      <div class="final-ornamento" aria-hidden="true"></div>
-
-      <h2 id="titulo-final" class="final-titulo">
-        Obrigado por fazer parte<br>dessa linda história
-      </h2>
-
-      <p class="final-corpo">
-        Nem toda história precisa de um final perfeito para ter sido verdadeira.
-        Algumas só precisam ter acontecido — e essa aconteceu bonito.
-      </p>
-
-      <p class="final-nota">
-        Guarde essa retrospectiva. Ela foi feita com cuidado,<br>
-        do começo ao fim, pensando em você.
-      </p>
-
-      <!-- Link para a página de convite (opcional) -->
-      <a href="convite.html" class="btn btn-primario" role="button">
-        Ver o convite especial
-      </a>
-
-      <div class="final-ornamento-baixo" aria-hidden="true"></div>
-    </div>
-  </section>
-
-
-  <!-- ════════════════════════════════════════════
-       RODAPÉ
-  ════════════════════════════════════════════ -->
-  <footer class="rodape">
-    <p>Feito com carinho &nbsp;·&nbsp; <span aria-hidden="true">♥</span></p>
-  </footer>
-
-
-  <script src="script.js"></script>
-</body>
-</html>
+  <script>
+    'use strict';
+
+    /* ★ CONFIGURAÇÕES */
+    const RESPOSTA_CERTA = 'carbonara';
+    const MINUTOS_ABERTA = 10;   // tempo que a carta fica disponível depois de aberta
+
+    const CHAVE_INICIO = 'cartaNova.inicio';    // quando ela entrou
+    const CHAVE_FIM    = 'cartaNova.encerrada'; // tempo acabou
+    const DURACAO_MS   = MINUTOS_ABERTA * 60 * 1000;
+
+    // localStorage pode falhar (ex.: modo restrito); nesse caso segue sem gravar
+    function ler(chave) {
+      try { return localStorage.getItem(chave); } catch (e) { return null; }
+    }
+    function gravar(chave, valor) {
+      try { localStorage.setItem(chave, valor); } catch (e) {}
+    }
+
+    // "Carbonara ", "CARBONARÁ" etc. contam como certo
+    function normalizar(txt) {
+      return txt.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function encerrar() {
+      gravar(CHAVE_FIM, '1');
+      document.getElementById('carta').remove();
+      document.getElementById('conteudo-carta').remove();
+      document.getElementById('pergunta').remove();
+      document.title = '';
+      document.body.className = 'encerrado';
+    }
+
+    function abrirCarta(inicio) {
+      const carta  = document.getElementById('carta');
+      const modelo = document.getElementById('conteudo-carta');
+
+      document.getElementById('pergunta').hidden = true;
+      carta.appendChild(modelo.content.cloneNode(true));
+      carta.hidden = false;
+      window.scrollTo(0, 0);
+
+      // Sem relógio na tela: quando o tempo acaba, a carta apaga sozinha
+      const resta = Math.max(0, DURACAO_MS - (Date.now() - inicio));
+      setTimeout(() => {
+        carta.classList.add('apagando');
+        setTimeout(encerrar, 2500);
+      }, resta);
+    }
+
+    function iniciar() {
+      // Tempo já acabou → preto para sempre
+      if (ler(CHAVE_FIM)) { encerrar(); return; }
+
+      // Já entrou antes e ainda está no prazo → abre a carta direto,
+      // sem perguntar de novo (recarregar ou fechar sem querer não zera o tempo)
+      const inicioSalvo = Number(ler(CHAVE_INICIO));
+      if (inicioSalvo) {
+        if (Date.now() - inicioSalvo >= DURACAO_MS) { encerrar(); return; }
+        abrirCarta(inicioSalvo);
+        return;
+      }
+
+      // Primeira vez → pergunta
+      const pergunta = document.getElementById('pergunta');
+      const form     = document.getElementById('form-pergunta');
+      const campo    = document.getElementById('resposta');
+      const erro     = document.getElementById('pergunta-erro');
+
+      pergunta.hidden = false;
+      campo.focus();
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (normalizar(campo.value) === RESPOSTA_CERTA) {
+          const agora = Date.now();
+          gravar(CHAVE_INICIO, String(agora));
+          abrirCarta(agora);
+        } else {
+          erro.textContent = 'Hmm… não foi esse. Tenta de novo.';
+          form.classList.remove('errou');
+          void form.offsetWidth; // reinicia a animação de tremer
+          form.classList.add('errou');
+          campo.select();
+        }
+      });
+    }
+
+    iniciar();
+  </script>
